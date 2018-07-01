@@ -1,0 +1,15 @@
+sudo: required
+addons:
+  apt:
+    sources:
+      - chef-stable-precise
+      packages:
+        - chefdk
+install:  echo "skip bundle install"
+
+services:
+  - docker
+
+env:
+  matrix:
+    - CHEF_VERSION=latest LANGUAGE=ruby OS=centos-6
