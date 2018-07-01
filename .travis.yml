@@ -2,9 +2,10 @@ sudo: required
 addons:
   apt:
     sources:
-      - chef-stable-precise
-      packages:
-        - chefdk
+    - chef-stable-precise
+    packages:
+    - chefdk
+
 install:  echo "skip bundle install"
 
 services:
@@ -12,9 +13,15 @@ services:
 
 env:
   matrix:
-    - CHEF_VERSION=latest LANGUAGE=ruby OS=centos-6
-
+  - CHEF_VERSION=latest LANGUAGE=ruby OS=centos-6
+  
 language: ruby
 before_script:
 - eval "$(/opt/chefdk/bin/chef shell-init bash)"
 - /opt/chefdk/bin/chef gem install kitchen-docker test-kitchen  foodcritic  kitchen-inspec  berkshelf rake
+
+script:
+- /opt/chefdk/bin/chef --version
+- /opt/chefdk/bin/foodcritic .
+- /opt/chefdk/bin/kitchen create
+- /opt/chefdk/bin/kitchen converge
