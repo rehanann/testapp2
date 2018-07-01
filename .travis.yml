@@ -25,3 +25,4 @@ script:
 - /opt/chefdk/bin/foodcritic .
 - /opt/chefdk/bin/kitchen create
 - /opt/chefdk/bin/kitchen converge
+- /opt/chefdk/bin/kitchen destroy
