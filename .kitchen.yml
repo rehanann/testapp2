@@ -18,6 +18,8 @@ platforms:
     driver:
       use_sudo: false
       image: centos:6
+      forward:
+      - 80:80
 
 suites:
   - name: default
